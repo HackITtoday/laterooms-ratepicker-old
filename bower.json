@@ -1,12 +1,10 @@
 {
   "name": "laterooms-ratepicker",
-  "version": "1.0.0",
   "authors": [
     "Marcus Hitchins <marcus@hhost.me>"
   ],
   "description": "Laterooms Rate Picker - This uses laterooms xml rate feed through a proxy server that we have setup. So if you need this for yourself can you please setup your own proxy server. php code included",
   "main": "laterooms-ratepicker.html",
-  "moduleType": [],
   "license": "MIT",
   "dependencies": {
     "laterooms-ratepicker": "HackITtoday/laterooms-ratepicker",
