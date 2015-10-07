@@ -1,0 +1,57 @@
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<!--
+`<laterooms-ratepicker>` This is a Polymer Element that pulls in rates from Laterooms API. It is still a work in progress and what is here is pre production.
+@demo demo.html
+-->
+
+
+<dom-module id="laterooms-ratepicker">
+  <template>
+    <iron-ajax auto url="{{_url}}" last-response="{{data}}"></iron-ajax>
+      <div class="daterow">
+        <paper-input type="number" value="{{day}}" label="day"></paper-input>
+        <paper-input type="number" value="{{month}}" label="month"></paper-input>
+        <paper-input type="number" value="{{year}}" label="year"></paper-input>
+        <paper-input type="number" value="{{nights}}" label="nights"></paper-input>
+      </div>
+      <div class="inputs">
+        <paper-input type="number" value="{{hotelid}}" label="hotelid"></paper-input>
+        <paper-input type="number" value="{{affiliateid}}" label="affiliateid"></paper-input>
+      </div>
+    <p>{{rate}}</p>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: "laterooms-ratepicker",
+    properties: {
+      day:{value:23},
+      month:{value:2},
+      year:{value:2016},
+      nights:{value:2},
+      hotelid:{value:73022},
+      affiliateid:{value:3095},
+      _url: {computed:'getUrl(day,month,year,nights,hotelid,affiliateid)'},
+      data: {observer:'_dataChanged'},
+      rate: {computed:'getRate(data)'}
+    },
+    _dataChanged: function(data){
+      console.log(data);
+    },
+    getUrl: function(day, month, year, nights, hotelid, affiliateid) {
+      return "http://46.101.40.191/?u=%3Faid%3D"+affiliateid+"%26rtype%3D7%26hids%3D"+hotelid+"%26sdate%3D"+year+"-"+month+"-"+day+"%26nights%3D"+nights;
+    },
+    getRate: function(data){
+      var rates = [];
+      for (var index = 0; index < data.lr_rates.hotel.hotel_rooms.room.length; ++index) {
+        var room = 0
+        for (var indexRate = 0; indexRate < data.lr_rates.hotel.hotel_rooms.room[index].rate.length; ++indexRate) {
+          room = room + (data.lr_rates.hotel.hotel_rooms.room[index].rate[indexRate].price.replace('£','')*1)
+        }
+        rates.push(room);
+      }
+      return '£' + rates.sort()[rates.length-1].toFixed(2);
+    }
+  });
+</script>
