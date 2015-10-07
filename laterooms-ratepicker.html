@@ -1,5 +1,6 @@
-<link rel="import" href="../iron-ajax/iron-ajax.html">
+<link rel="import" href="../paper-material/paper-material.html">
 <link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../iron-ajax/iron-ajax.html">
 <!--
 `<laterooms-ratepicker>` This is a Polymer Element that pulls in rates from Laterooms API. It is still a work in progress and what is here is pre production.
 @demo demo.html
@@ -8,7 +9,8 @@
 
 <dom-module id="laterooms-ratepicker">
   <template>
-    <iron-ajax auto url="{{_url}}" last-response="{{data}}"></iron-ajax>
+    <paper-material class="row layout center">
+      <iron-ajax auto url="{{_url}}" last-response="{{data}}"></iron-ajax>
       <div class="daterow">
         <paper-input type="number" class="flex" value="{{day}}" label="day"></paper-input>
         <paper-input type="number" class="flex" value="{{month}}" label="month"></paper-input>
@@ -19,7 +21,8 @@
         <paper-input type="number" class="flex" value="{{hotelid}}" label="hotelid"></paper-input>
         <paper-input type="number" class="flex" value="{{affiliateid}}" label="affiliateid"></paper-input>
       </div>
-    <p>{{rate}}</p>
+      <p>{{rate}}</p>
+    </paper-material>
   </template>
 </dom-module>
 <script>
