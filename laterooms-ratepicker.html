@@ -51,7 +51,12 @@
         }
         rates.push(room);
       }
-      return '£' + rates.sort()[rates.length-1].toFixed(2);
+      if (rates.sort()[rates.length-1] > 1) {
+        return '£' + rates.sort()[rates.length-1].toFixed(2);
+      } else {
+        return 'No rates available';
+      }
+      
     }
   });
 </script>
