@@ -10,14 +10,14 @@
   <template>
     <iron-ajax auto url="{{_url}}" last-response="{{data}}"></iron-ajax>
       <div class="daterow">
-        <paper-input type="number" value="{{day}}" label="day"></paper-input>
-        <paper-input type="number" value="{{month}}" label="month"></paper-input>
-        <paper-input type="number" value="{{year}}" label="year"></paper-input>
-        <paper-input type="number" value="{{nights}}" label="nights"></paper-input>
+        <paper-input type="number" class="flex" value="{{day}}" label="day"></paper-input>
+        <paper-input type="number" class="flex" value="{{month}}" label="month"></paper-input>
+        <paper-input type="number" class="flex" value="{{year}}" label="year"></paper-input>
+        <paper-input type="number" class="flex"  value="{{nights}}" label="nights"></paper-input>
       </div>
       <div class="inputs">
-        <paper-input type="number" value="{{hotelid}}" label="hotelid"></paper-input>
-        <paper-input type="number" value="{{affiliateid}}" label="affiliateid"></paper-input>
+        <paper-input type="number" class="flex" value="{{hotelid}}" label="hotelid"></paper-input>
+        <paper-input type="number" class="flex" value="{{affiliateid}}" label="affiliateid"></paper-input>
       </div>
     <p>{{rate}}</p>
   </template>
